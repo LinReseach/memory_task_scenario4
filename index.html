@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colleague Memory Task</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    img {
+      max-width: 80%;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+    }
+    .button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div id="content"></div>
+  <button class="button" onclick="nextPage()">Next</button>
+
+  <script>
+    window.onload = function () {
+      var imageSources = [
+        "page1.png",
+        "page2.png",
+        "page3.png",
+        "page4.png",
+        "page5.png",
+        "page6.png",
+        "page7.png"
+      ];
+
+      var currentPage = 0;
+
+      function renderPage() {
+        var contentDiv = document.getElementById("content");
+        contentDiv.innerHTML = "";
+
+        var img = document.createElement("img");
+        img.src = imageSources[currentPage];
+        img.alt = "Slide " + (currentPage + 1);
+        contentDiv.appendChild(img);
+
+        if (currentPage === imageSources.length - 1) {
+          document.querySelector("button").style.display = "none";
+        }
+      }
+
+      window.nextPage = function () {
+        if (currentPage < imageSources.length - 1) {
+          currentPage++;
+          renderPage();
+        }
+      };
+
+      renderPage();
+    };
+  </script>
+</body>
+</html>
